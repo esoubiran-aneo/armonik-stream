@@ -1,5 +1,10 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { GrpcCoreModule } from '@ngx-grpc/core';
+import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
 
 export const appConfig: ApplicationConfig = {
-  providers: []
+  providers: [
+    importProvidersFrom(GrpcCoreModule.forRoot()),
+    importProvidersFrom(GrpcWebClientModule.forRoot({ settings: { host: '' } }))
+  ]
 };
